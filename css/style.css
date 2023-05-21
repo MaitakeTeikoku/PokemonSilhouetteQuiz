@@ -1,0 +1,603 @@
+body {
+    background-color: #7cc7e8;
+    padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+    font-family: 'BIZ UDGothic', sans-serif;
+    line-height:30px;
+    max-width: 960px;
+    margin: 0 auto;
+    user-select: none;
+}
+
+/* ヘッダー非表示(β版) */
+h2 {
+    background-color: white;
+    color: #7cc7e8;
+    border-radius: 4px;
+    font-size: 3vmin;
+    line-height: 40px;
+    text-align: center;
+    display: none;
+}
+
+.radioGroup {
+    position: relative;
+    padding: 1.5rem 1rem 0.5rem 1rem;
+    border-radius: 5px;
+    border: 3px solid white;
+    color: white;
+    font-size: 2vmin;
+    font-weight: bold;
+    z-index: 0;
+}
+.radioGroup::before {
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #7cc7e8;
+    content: attr(data-title);
+}
+.radioGroupFlex{
+    display: flex;
+}
+.radioGroupFlex .radioArea{
+    margin-right: 5%;
+}
+
+/* PC用 */
+@media (hover: hover) {
+    .radioArea {
+        margin-bottom: 0.2rem;
+        display: flex;
+    }
+    .radioArea input[type=radio] {
+        position: relative;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        transition: .3s;
+    }
+    .radioArea label {
+        cursor: pointer;
+    }
+    .radioArea label:hover {
+        background-color: skyblue; /* マウスオーバー時の背景色を指定する */
+    }
+    .radioArea input[type=radio]:checked::before {
+        position: absolute;
+        top: -.4rem;
+        left: -1rem;
+        width: 0;
+        height: 0;
+        border: solid 7px transparent;
+        border-left-color: white;
+        margin-top: -7px;
+        content: '';
+    }
+}
+/* スマホ用 */
+@media (hover: none) {
+    .radioArea {
+        display: flex;
+    }
+}
+
+.nameArea {
+    font-size: 16px !important;
+    height: 2.4em;
+    width: 30%;
+    padding: 0 5px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px gray inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.nameArea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px #0088cc inset;
+}
+
+.nicknameNote{
+    font-size: 1vmin;
+    display: inline-block;
+}
+
+input[type="submit"] {
+    background-color: transparent;
+    border-color: transparent;
+    color: #555555;
+    font-size: 3vmin;
+    font-family: 'BIZ UDGothic', sans-serif;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.startButton{
+    display: flex;
+	justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: white;
+    z-index:1;
+    height: 40px;
+}
+.startButton::before {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-1;
+    width: 150%;
+    height: 500%;
+    content:"";
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-transform: translateX(-96%) ;
+    transform: translateX(-96%);
+    background-color: #f87060;
+}
+.startButton:hover::before {
+    -webkit-transform: translateX(0%) ;
+    transform: translateX(0%) ;
+}
+
+.summary {
+    color: white;
+    font-size: 2vmin;
+    cursor: pointer;
+}
+
+.rankLink {
+    text-align:center;
+}
+a.rankButton {
+    font-size: 5vmin;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    overflow: hidden;
+    padding: 0.5rem 2rem;
+    color: #ffffff;
+    border-radius: 0;
+    background: #222222;
+}
+a.rankButton span {
+    position: relative;
+    z-index: 1;
+}
+a.rankButton:before {
+    position: absolute;
+    top: 0;
+    left: calc(-100% + 10px);
+    width: 100%;
+    height: 100%;
+    content: '';
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+    background: #009944;
+}
+a.rankButton:after {
+    position: absolute;
+    top: 0;
+    right: calc(-100% + 10px);
+    width: 100%;
+    height: 100%;
+    content: '';
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+    background: #009944;
+} 
+a.rankButton:hover:before {
+    -webkit-transform: translateX(50%) translateY(0);
+    transform: translateX(50%) translateY(0);
+}
+a.rankButton:hover:after {
+    -webkit-transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
+}
+
+
+.image img {
+    /* 画像をシルエットにする */
+    filter: brightness(0%);
+    height: 320px;
+}
+.imageFrame {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.judge {
+    display: flex;
+    justify-content: center;
+    opacity: 0.5;
+    margin: -450px 20px 0;
+    position: relative;
+    z-index: 2;
+}
+.judge img {
+    height: 480px;
+}
+
+.dictImage {
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
+}
+.dictImage img {
+    max-height: 200%;
+    filter: brightness(100%);
+    margin-top: -15px;
+    margin-left: -75%;
+}
+
+.dictImage2 {
+    height: 20px;
+    width: 20px;
+    margin-right: 15px;
+}
+.dictImage2 img{
+    max-height: 200%;
+    filter: brightness(100%);
+    margin-top: -6px;
+}
+
+.testInfo {
+    font-weight: bold;
+    font-size: 3vmin;
+    color: white;
+}
+.time{
+    display: inline-block;
+}
+
+.test{
+    text-align : center;
+}
+
+.progress {
+    width: 50%;
+    height: 10px;
+    vertical-align: middle;
+    background-color: white;
+    border-radius: 15px;
+}
+.progress::-webkit-progress-bar {
+    background-color: azure;
+    border-radius: 15px;
+}
+.progress::-webkit-progress-value {
+    background-color: #0088cc;
+    border-radius: 15px;
+}
+
+.testInfo2 {
+    font-weight: bold;
+    font-size: 4vmin;
+    color: white;
+}
+
+/* PC用 */
+@media (hover: hover) {
+    .choice {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: 400px;
+        margin: auto;
+        margin-top: 0.5em;
+        padding: 1rem 4rem;
+        font-size: 3vmin;
+        font-weight: bold;
+        border: 2px solid #3066be;
+        border-radius: 4px;
+        color: #3066be;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .choice::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #3066be;
+        transform: translateX(-100%);
+        transition: all .3s;
+        z-index: -1;
+    }
+    .choice:hover::before {
+        transform: translateX(0);
+    }
+    .choice:hover {
+        color: white;
+    }
+
+    .choice2 {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: 400px;
+        margin: auto;
+        margin-top: 0.5em;
+        padding: 1rem 4rem;
+        font-size: 3vmin;
+        font-weight: bold;
+        border: 2px solid white;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .choice2::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        transform: translateX(-100%);
+        transition: all .3s;
+        z-index: -1;
+    }
+    .choice2:hover::before {
+        transform: translateX(0);
+    }
+    .choice2:hover {
+        color: black;
+    }
+}
+/* スマホ用 */
+@media (hover: none) {
+    .choice {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: 400px;
+        margin: auto;
+        margin-top: 0.5em;
+        padding: 1rem 4rem;
+        font-size: 3vmin;
+        font-weight: bold;
+        border: 2px solid #3066be;
+        border-radius: 4px;
+        color: #3066be;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .choice2 {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: 400px;
+        margin: auto;
+        margin-top: 0.5em;
+        padding: 1rem 4rem;
+        font-size: 3vmin;
+        font-weight: bold;
+        border: 2px solid white;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+}
+
+.result{
+    text-align : center;
+    font-size: 3vmin;
+    color: white;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+table tr{
+    border-bottom: solid 1px white;
+}
+table tr:last-child{
+    border-bottom: none;
+}
+table th{
+    position: relative;
+    text-align: left;
+    font-size: 2vmin;
+    width: auto;
+    background-color: #0088cc;
+    color: white;
+    text-align: center;
+    padding: 2px 0;
+}
+table th:after{
+    display: block;
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top:calc(50% - 10px);
+    right:-10px;
+    border-left: 10px solid #0088cc;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+table td{
+    text-align: left;
+    width: auto;
+    text-align: center;
+    background-color: skyblue;
+    padding: 2px 0;
+}
+.resultDataValue {
+    font-size: 3vmin;
+    background-color: skyblue;
+}
+.resultDataCalc {
+    text-align: left;
+    font-size: 2vmin;
+    background-color: silver;
+    padding-left: 10px;
+}
+.resultSum {
+    margin-top: 20px;
+    font-size: 5vmin;
+    border-radius: 4px;
+    background-color: #f87060;
+    animation: resultSumKey .3s ease infinite alternate;
+}
+@keyframes resultSumKey {
+  0% {transform: translateY(0px);}
+  100% {transform: translateY(-5px);}
+}
+.resultSumValue {
+    display: inline-block;
+    font-size: 6vmin;
+    font-weight: bold;
+}
+
+.errorForm {
+    color: #3066be;
+    cursor: pointer;
+}
+
+/* PC用 */
+@media (hover: hover) {
+    .back {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: auto;
+        margin: auto;
+        margin-top: 0.5em;
+        padding: 1rem 4rem;
+        font-size: 3vmin;
+        border-radius: 4px;
+        border: 1px solid #0088cc;
+        color: #0088cc;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: all 0.2s ease-in;
+        animation: backKey 5s infinite;
+    }
+    @keyframes backKey {
+        96% {transform: translate(0px, 0px);}
+        98% {transform: translate(4px, 0px);}
+        90% {transform: translate(-4px, 0px);}
+        92% {transform: translate(4px, 0px);}
+        94% {transform: translate(-4px, 0px);}
+        96% {transform: translate(4px, 0px);}
+        98% {transform: translate(-4px, 0px);}
+        100% {transform: translate(0px, 0px);}
+    }
+    .back::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.25);
+        top: 100%;
+        width: 140%;
+        height: 180%;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+    }
+    .back:after {
+        content: "";
+        position: absolute;
+        left: 55%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.45);
+        top: 180%;
+        width: 160%;
+        height: 190%;
+        background-color: #0088cc;
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+    }
+        
+    .back:hover {
+        color: #ffffff;
+        border: 1px solid #0088cc;
+    }
+        
+    .back:hover:before {
+        top: -35%;
+        background-color: #0088cc;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+    }
+        
+    .back:hover:after {
+        top: -45%;
+        background-color: #0088cc;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+    }
+}
+/* スマホ用 */
+@media (hover: none) {
+    .back {
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        width: auto;
+        margin: auto;
+        margin-top: 0.5em;
+        padding: 1rem 4rem;
+        font-size: 3vmin;
+        font-weight: bold;
+        border-radius: 4px;
+        border: 2px solid #0088cc;
+        color: #0088cc;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        animation: backKey 5s infinite;
+    }
+    @keyframes backKey {
+        96% {transform: translate(0px, 0px);}
+        98% {transform: translate(4px, 0px);}
+        90% {transform: translate(-4px, 0px);}
+        92% {transform: translate(4px, 0px);}
+        94% {transform: translate(-4px, 0px);}
+        96% {transform: translate(4px, 0px);}
+        98% {transform: translate(-4px, 0px);}
+        100% {transform: translate(0px, 0px);}
+    }
+}
