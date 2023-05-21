@@ -19,6 +19,17 @@ h2 {
     display: none;
 }
 
+img{
+    /* PCの右クリック禁止 */
+    pointer-events: none;
+    /* SPの長押し禁止 */
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-touch-callout:none;
+    -moz-user-select:none;
+    user-select:none;
+}
+
 .radioGroup {
     position: relative;
     padding: 1.5rem 1rem 0.5rem 1rem;
